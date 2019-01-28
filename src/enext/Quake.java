@@ -7,6 +7,7 @@ import enext.modelos.Player;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -90,5 +91,29 @@ public class Quake {
             System.out.println("  }");
         }
         System.out.println("}");
+        // Ranking de jogadores
+        System.out.println("Ranking: {");
+        Map<String, Integer> totalKillsPlayer = new HashMap<>();
+        List<Player> players = new ArrayList<>();
+        for (Game game : games) {
+            for (Player p : game.getPlayers()) {
+                players.add(p);
+            }
+        }
+
+        for (Player jogadores : players) {
+            String nome = jogadores.getName();
+            Integer killsGame = jogadores.getKills().getKillsValidas();
+            if (!totalKillsPlayer.containsKey(nome)) {
+                totalKillsPlayer.put(nome, 0);
+            }
+            totalKillsPlayer.put(nome, totalKillsPlayer.get(nome) + killsGame);
+        }
+
+        for (Entry<String, Integer> Player : totalKillsPlayer.entrySet()) {
+            System.out.println(" " + Player.getKey() + ": " + Player.getValue());
+        }
+        System.out.println("}");
+        System.out.println("");
     }
 }
