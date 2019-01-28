@@ -16,7 +16,7 @@ public class Game {
         this.players = players;
     }
     
-    public String getNome(){
+    public String getName(){
         return nome;
     }
     

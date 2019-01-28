@@ -43,7 +43,6 @@ public class ParserLines {
                 }
                 Partidas++;
                 game.setName("game: " + Partidas);
-                System.out.println(game.getNome());
             } else {
                 game.addLine(linha);
             }
@@ -59,7 +58,9 @@ public class ParserLines {
         List<String> linhas = game.getLines();
         String nome = game.getNome();
         Map<String, Player> mapPlayers = new HashMap<>();
+        FilterGame.filterGame(linhas, mapPlayers); 
         List<Player> players = new ArrayList<>(mapPlayers.values());
+        
         return new Game(nome, players);
     }
 }
