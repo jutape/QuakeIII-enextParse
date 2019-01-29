@@ -4,6 +4,10 @@ package enext.modelos;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+* Informações das mortes no jogo
+*/
+
 public class Kills {
     private Integer KillsValidas;
     private Integer TotalKills;

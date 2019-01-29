@@ -16,12 +16,12 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class Quake {
-
     /*
     * Acessando arquivo e chamando ParseLines para separa os games por linha
-     */
+    */
     public static void main(String[] args) throws Exception {
         List<String> linhas;
+        System.out.println("Digite o diretorio do arquivo .Log:");
         final String diretorio = new Scanner(System.in).next();
 
         boolean arquivoExiste = Files.exists(Paths.get(diretorio));
@@ -43,8 +43,9 @@ public class Quake {
             System.out.println("Erro: Diretório não encontrado");
         }
     }
-
+    //imprimir todos os resultados
     public static void printGames(List<Game> games) {
+        //Dados dos jogos
         for (Game game : games) {
             System.out.println(game.getName() + " {");
             int totalKills = 0;
@@ -91,6 +92,7 @@ public class Quake {
             System.out.println("  }");
         }
         System.out.println("}");
+
         // Ranking de jogadores
         System.out.println("Ranking: {");
         Map<String, Integer> totalKillsPlayer = new HashMap<>();
@@ -114,6 +116,5 @@ public class Quake {
             System.out.println(" " + Player.getKey() + ": " + Player.getValue());
         }
         System.out.println("}");
-        System.out.println("");
     }
 }

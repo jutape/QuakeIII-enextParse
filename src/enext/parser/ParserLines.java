@@ -9,15 +9,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+    /*
+    *Divide games por linhas
+    */
 public class ParserLines {
     private List<String> lines;
 
     public ParserLines (List<String> linhas) {
         this.lines = linhas; 
     }
-    /*
-    *Divide games por linhas
-    */
+    
     public List<Game> parserGames() {
         List<LinesGame> linesGame = parserLines();
         List<Game> games = new ArrayList<>();
@@ -28,6 +29,7 @@ public class ParserLines {
         return games;
     }
 
+    //divide linhas de cada game e cria o game
     List<LinesGame> parserLines() {
         List<LinesGame> games = new ArrayList<>();
         int Partidas = 0;
@@ -54,6 +56,7 @@ public class ParserLines {
         return games;
     }
 
+    //Chama o filtro dos restante das informações
     private Game parserLinesGame(LinesGame game) {
         List<String> linhas = game.getLines();
         String nome = game.getNome();

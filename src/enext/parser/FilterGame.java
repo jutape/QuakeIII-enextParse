@@ -7,8 +7,14 @@ import enext.modelos.Player;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
+    
+    /*
+    * Filtra as informações das linha dos games
+    */
 
 public class FilterGame {
+
+    //Começa passar pelas linhas dos filtros
     public static void filterGame(List<String> lines, Map<String, Player> players){
         for (String line : lines) {
             Matcher RegistroPlayer = Regex.encontrarSenteçaespecifica(line.trim(), "ClientUserinfoChanged");
@@ -21,6 +27,8 @@ public class FilterGame {
             }
         }
     }
+
+    //filtrar registros dos players
     private static void filterReg(Matcher registroPlayer, Map<String, Player> players){
         String player = registroPlayer.group(3).trim();
         String playerID = null;
@@ -54,6 +62,8 @@ public class FilterGame {
             players.put(playerID, new Player(playerID, playerName, new Kills()));
         }
     }
+
+    //filtrar registros das mortes
     private static void filterKill(Matcher Kill, Map<String, Player> players) {
         String killsPlayer = Kill.group(3).trim();
         Matcher matcherKill = Regex.criarPadraoSentenca("([0-9]*)\\s([0-9]*)\\s([0-9]*)(.*)", killsPlayer);
